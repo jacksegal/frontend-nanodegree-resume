@@ -212,3 +212,18 @@ span {
     display: block;
   }
 }
+
+
+
+
+/* Jack's CSS */
+
+.project-image {
+  width: 400px;
+}
+
+#skills {
+  display:list-item;
+}
+
+
