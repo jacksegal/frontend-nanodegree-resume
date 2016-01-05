@@ -2,7 +2,7 @@
 var bio = {
 	"name" : "Jack Segal",
 	"role" : "Frontend Web Developer",
-	"picture" : "http://portfolio.wacko.io/img/logo.png",
+	"picture" : "https://pbs.twimg.com/profile_images/569084875605438464/3nPrX5M0.png",
 	"welcomeMessage" : "Hello and welcome to my CV",
 	"contacts" : {
 		"email" : "jackbsegal@gmail.com",
@@ -197,17 +197,55 @@ var education = {
 	]
 };
 
-/*
+
 education.display = function() {
-	for(educations in education){
+	for(school in education.schools){
 
-	 	for(types in educations){
+		// create a new education entry
+		$("#education").append(HTMLschoolStart);
 
+		// add Name & Degree
+		var formattedSchoolName = HTMLschoolName.replace("%data%",education.schools[school].name);
+		var formattedSchoolDegree = HTMLschoolDegree.replace("%data%",education.schools[school].degree);
 
-	 	}
+		$(".education-entry:last").append(formattedSchoolName+formattedSchoolDegree);
+
+		// add Dates
+		var formattedSchoolDates = HTMLschoolDates.replace("%data%",education.schools[school].dates);
+		$(".education-entry:last").append(formattedSchoolDates);
+
+		// add Location
+		var formattedSchoolLocation = HTMLschoolLocation.replace("%data%",education.schools[school].location);
+		$(".education-entry:last").append(formattedSchoolLocation);
+
+		// add Major
+		var formattedSchoolMajor = HTMLschoolMajor.replace("%data%",education.schools[school].majors[0]);
+		$(".education-entry:last").append(formattedSchoolMajor);
+	}
+
+	// create online classes entry
+	$("#education").append(HTMLonlineClasses);
+
+	for (course in education.onlineCourses){
+
+		// create a new education entry
+		$("#education").append(HTMLschoolStart);
+
+		// add title & school (HTMLonlineTitle - HTMLonlineSchool)
+		var formattedOnlineTitle = HTMLonlineTitle.replace("%data%",education.onlineCourses[course].title);
+		var formattedOnlineSchool = HTMLonlineSchool.replace("%data%",education.onlineCourses[course].school);;
+		$(".education-entry:last").append(formattedOnlineTitle+formattedOnlineSchool);
+
+		// add dates (HTMLonlineDates)
+		var formattedOnlineDates = HTMLonlineDates.replace("%data%",education.onlineCourses[course].dates);
+		$(".education-entry:last").append(formattedOnlineDates);
+
+		// add HTMLonlineURL
+		var formattedOnlineURL = HTMLonlineURL.replace("%data%",education.onlineCourses[course].url);
+		$(".education-entry:last").append(formattedOnlineURL);
 	}
 }
-*/
+
 
 
 /*
@@ -240,6 +278,9 @@ work.display();
 
 // build projects
 projects.display();
+
+// build education history
+education.display();
 
 // build map
 $("#mapDiv").append(googleMap);
