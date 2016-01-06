@@ -2,53 +2,55 @@
 var bio = {
 	"name" : "Jack Segal",
 	"role" : "Frontend Web Developer",
-	"picture" : "https://pbs.twimg.com/profile_images/569084875605438464/3nPrX5M0.png",
+	"biopic" : "https://pbs.twimg.com/profile_images/569084875605438464/3nPrX5M0.png",
 	"welcomeMessage" : "Hello and welcome to my CV",
 	"contacts" : {
 		"email" : "jackbsegal@gmail.com",
 		"github" : "jacksegal",
 		"twitter" : "segal_jack",
-		"location" : "London, UK"
+		"location" : "London"
 	},
 	"skills": ["MySQL", "php", "AWS", "WordPress", "PCI DSS Compliance", "Responsive Web Design"]
 };
 
-bio.displayPicture = function() {
-	var formattedImage = HTMLbioPic.replace("%data%",bio.picture);
-	$("#header").append(formattedImage);
+
+bio.display = function(){
+    // build name and role
+    var formattedRole = HTMLheaderRole.replace("%data%",bio.role);
+    $("#header").prepend(formattedRole);
+
+    var formattedName = HTMLheaderName.replace("%data%",bio.name);
+    $("#header").prepend(formattedName);
+
+    bio.displayContacts("#topContacts");
+
+    var formattedLocation = HTMLlocation.replace("%data%",bio.contacts.location);
+    $("#topContacts").append(formattedLocation);
+
+    var formattedImage = HTMLbioPic.replace("%data%",bio.biopic);
+    $("#header").append(formattedImage);
+
+    // create new empty skill (HTMLskillsStart)
+    $("#header").append(HTMLskillsStart);
+
+    for(skill in bio.skills){
+
+        // add skill (HTMLskills)
+        var formattedSkill = HTMLskills.replace("%data%", bio.skills[skill]);
+        $("#skills").append(formattedSkill);
+    }
+
 }
 
-bio.displayMessage = function() {
-	var formattedMessage = HTMLwelcomeMsg.replace("%data%",bio.welcomeMessage);;
-	$("#header").append(formattedMessage);
-}
+bio.displayContacts = function(htmlElem){
+    var formattedEmail = HTMLemail.replace("%data%",bio.contacts.email);
+    $(htmlElem).append(formattedEmail);
 
-bio.displaySkills = function() {
+    var formattedGithub = HTMLgithub.replace("%data%",bio.contacts.github);
+    $(htmlElem).append(formattedGithub);
 
-	// create new empty skill (HTMLskillsStart)
-	$("#header").append(HTMLskillsStart);
-
-	for(skill in bio.skills){
-
-		// add skill (HTMLskills)
-		var formattedSkill = HTMLskills.replace("%data%", bio.skills[skill]);
-		$("#skills").append(formattedSkill);
-	}
-}
-
-bio.displayContacts = function(appendHTML) {
-
-	var formattedEmail = HTMLemail.replace("%data%",bio.contacts.email);
-	$(appendHTML).append(formattedEmail);
-
-	var formattedGithub = HTMLgithub.replace("%data%",bio.contacts.github);
-	$(appendHTML).append(formattedGithub);
-
-	var formattedTwitter = HTMLtwitter.replace("%data%",bio.contacts.twitter);
-	$(appendHTML).append(formattedTwitter);
-
-	var formattedLocation = HTMLlocation.replace("%data%",bio.contacts.location);
-	$(appendHTML).append(formattedLocation);
+    var formattedTwitter = HTMLtwitter.replace("%data%",bio.contacts.twitter);
+    $(htmlElem).append(formattedTwitter);
 }
 
 
@@ -58,21 +60,21 @@ var work = {
 		{
 			"employer" : "Tuxedo",
 			"title" : "Service and Support Manager",
-			"location" : "London, UK",
+			"location" : "Sheffield",
 			"dates" : "2014-03-01 - 2016-03-01",
 			"description" : "Managing Application Development, Infrastructure and Problem Mgmt"
 		},
 		{
 			"employer" : "Tuxedo",
 			"title" : "Service Analyst",
-			"location" : "London, UK",
+			"location" : "Birmingham",
 			"dates" : "2012-06-01 - 2014-03-01",
 			"description" : "Escalation point for business and clients; writing development specifications; supporting sales and implementation teams; and managing testing"
 		},
 		{
 			"employer" : "Tuxedo",
 			"title" : "Technical Coordinator",
-			"location" : "London, UK",
+			"location" : "Essex",
 			"dates" : "2011-02-01 - 2012-06-01",
 			"description" : "Managed monthly development releases - budgeting, prioritising, dev team's time and testing"
 		}
@@ -170,7 +172,7 @@ var education = {
 	"schools" : [
 		{
 			"name" : "City Lit",
-			"location" : "London",
+			"location" : "Oxford",
 			"degree" : "Math",
 			"majors" : ["BC1", "BC2", "BC3"],
 			"dates" : "2012",
@@ -258,24 +260,8 @@ education.display = function() {
 
 */
 
-
-// build name and role
-var formattedRole = HTMLheaderRole.replace("%data%",bio.role);
-$("#header").prepend(formattedRole);
-
-var formattedName = HTMLheaderName.replace("%data%",bio.name);
-$("#header").prepend(formattedName);
-
-
-// build contact details - header
-bio.displayContacts("#topContacts");
-
-// build bio picture
-bio.displayPicture();
-
-
-// build skills
-bio.displaySkills();
+// build bio
+bio.display();
 
 // build employment history
 work.display();
@@ -289,8 +275,7 @@ education.display();
 // build map
 $("#mapDiv").append(googleMap);
 
-// build contact details - footer
+// build footer contacts
 bio.displayContacts("#footerContacts");
-
 // build internationalize button
 //$("#main").append(internationalizeButton);
