@@ -41,6 +41,22 @@ bio.display = function(){
     var formattedImage = HTMLbioPic.replace("%data%",bio.biopic);
     $("#header").append(formattedImage);
 
+    // build footer contacts
+    var formattedMobile = HTMLmobile.replace("%data%",bio.contacts.mobile);
+    $("#footerContacts").append(formattedMobile);
+
+    var formattedEmail = HTMLemail.replace("%data%",bio.contacts.email);
+    $("#footerContacts").append(formattedEmail);
+
+    var formattedGithub = HTMLgithub.replace("%data%",bio.contacts.github);
+    $("#footerContacts").append(formattedGithub);
+
+    var formattedTwitter = HTMLtwitter.replace("%data%",bio.contacts.twitter);
+    $("#footerContacts").append(formattedTwitter);
+
+    var formattedLocation = HTMLlocation.replace("%data%",bio.contacts.location);
+    $("#footerContacts").append(formattedLocation);
+
     // create new empty skill (HTMLskillsStart)
     $("#header").append(HTMLskillsStart);
 
@@ -281,22 +297,6 @@ education.display();
 
 // build map
 $("#mapDiv").append(googleMap);
-
-// build footer contacts
-var formattedMobile = HTMLmobile.replace("%data%",bio.contacts.mobile);
-$("#footerContacts").append(formattedMobile);
-
-var formattedEmail = HTMLemail.replace("%data%",bio.contacts.email);
-$("#footerContacts").append(formattedEmail);
-
-var formattedGithub = HTMLgithub.replace("%data%",bio.contacts.github);
-$("#footerContacts").append(formattedGithub);
-
-var formattedTwitter = HTMLtwitter.replace("%data%",bio.contacts.twitter);
-$("#footerContacts").append(formattedTwitter);
-
-var formattedLocation = HTMLlocation.replace("%data%",bio.contacts.location);
-$("#footerContacts").append(formattedLocation);
 
 // build internationalize button
 //$("#main").append(internationalizeButton);
