@@ -24,38 +24,23 @@ bio.display = function(){
     $("#header").prepend(formattedName);
 
     var formattedMobile = HTMLmobile.replace("%data%",bio.contacts.mobile);
-    $("#topContacts").append(formattedMobile);
+    $("#topContacts, #footerContacts").append(formattedMobile);
 
     var formattedEmail = HTMLemail.replace("%data%",bio.contacts.email);
-    $("#topContacts").append(formattedEmail);
+    $("#topContacts, #footerContacts").append(formattedEmail);
 
     var formattedGithub = HTMLgithub.replace("%data%",bio.contacts.github);
-    $("#topContacts").append(formattedGithub);
+    $("#topContacts, #footerContacts").append(formattedGithub);
 
     var formattedTwitter = HTMLtwitter.replace("%data%",bio.contacts.twitter);
-    $("#topContacts").append(formattedTwitter);
+    $("#topContacts, #footerContacts").append(formattedTwitter);
 
     var formattedLocation = HTMLlocation.replace("%data%",bio.contacts.location);
-    $("#topContacts").append(formattedLocation);
+    $("#topContacts, #footerContacts").append(formattedLocation);
 
     var formattedImage = HTMLbioPic.replace("%data%",bio.biopic);
     $("#header").append(formattedImage);
-
-    // build footer contacts
-    var formattedMobile = HTMLmobile.replace("%data%",bio.contacts.mobile);
-    $("#footerContacts").append(formattedMobile);
-
-    var formattedEmail = HTMLemail.replace("%data%",bio.contacts.email);
-    $("#footerContacts").append(formattedEmail);
-
-    var formattedGithub = HTMLgithub.replace("%data%",bio.contacts.github);
-    $("#footerContacts").append(formattedGithub);
-
-    var formattedTwitter = HTMLtwitter.replace("%data%",bio.contacts.twitter);
-    $("#footerContacts").append(formattedTwitter);
-
-    var formattedLocation = HTMLlocation.replace("%data%",bio.contacts.location);
-    $("#footerContacts").append(formattedLocation);
+    
 
     // create new empty skill (HTMLskillsStart)
     $("#header").append(HTMLskillsStart);

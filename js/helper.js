@@ -234,7 +234,7 @@ function initializeMap() {
 
 
 $(document).click(function(loc) {
-  logClicks(loc.pageX, loc.pageY)
+  logClicks(loc.pageX, loc.pageY);
 });
 
 
