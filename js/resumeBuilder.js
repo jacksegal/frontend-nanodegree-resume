@@ -95,13 +95,13 @@ var education = {
         {
             "title" : "Intro to HTML and CSS",
             "school" : "Udacity",
-            "dates" : "2015",
+            "date" : "2015",
             "url" : "https://www.udacity.com"
         },
         {
             "title" : "JavaScript Basics",
             "school" : "Udacity",
-            "dates" : "2015",
+            "date" : "2015",
             "url" : "https://www.udacity.com"
         }
     ]
@@ -148,7 +148,7 @@ education.display = function() {
             $(".education-entry:last").append(formattedOnlineTitle+formattedOnlineSchool);
 
             // add dates (HTMLonlineDates)
-            var formattedOnlineDates = HTMLonlineDates.replace("%data%",education.onlineCourses[course].dates);
+            var formattedOnlineDates = HTMLonlineDates.replace("%data%",education.onlineCourses[course].date);
             $(".education-entry:last").append(formattedOnlineDates);
 
             // add HTMLonlineURL
